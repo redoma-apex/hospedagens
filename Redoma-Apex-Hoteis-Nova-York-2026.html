@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seleção de Hotéis Premium · Nova York | Redoma/Apex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0078d2;
+  --blue-light:#e6f2fb;
+  --blue-mid:#cce4f7;
+  --dark:#1a1a2e;
+  --bg:#f5f5f5;
+  --bg-card:#ffffff;
+  --text-primary:#1a1a2e;
+  --text-secondary:#6b7280;
+  --border:#dde3ed;
+  --border-strong:#c5d3e8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text-primary);line-height:1.6;min-height:100vh;}
+.header{background:#ffffff;border-bottom:3px solid var(--blue);padding:28px 60px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 8px rgba(0,120,210,0.07);}
+.brand{font-size:26px;font-weight:700;color:var(--blue);letter-spacing:3px;text-transform:uppercase;}
+.brand span{color:var(--text-secondary);font-weight:300;}
+.header-right{text-align:right;}
+.header-right .htitle{font-size:14px;font-weight:600;color:var(--text-primary);letter-spacing:2px;text-transform:uppercase;}
+.header-right .hdate{font-size:11px;color:var(--text-secondary);letter-spacing:1px;margin-top:5px;}
+.hero{padding:48px 60px 36px;background:#ffffff;border-bottom:1px solid var(--border);}
+.eyebrow{font-size:10px;letter-spacing:4px;color:var(--blue);text-transform:uppercase;margin-bottom:12px;font-weight:600;}
+.hero h1{font-size:38px;font-weight:300;line-height:1.15;margin-bottom:16px;color:var(--dark);}
+.hero h1 em{font-style:normal;color:var(--blue);font-weight:600;}
+.hero-desc{font-size:13px;color:var(--text-secondary);max-width:680px;letter-spacing:.3px;line-height:1.8;}
+.params{background:#ffffff;border-bottom:1px solid var(--border);padding:18px 60px;display:flex;gap:36px;flex-wrap:wrap;}
+.param{display:flex;align-items:center;gap:10px;}
+.pico{color:var(--blue);font-size:14px;width:20px;text-align:center;}
+.plabel{font-size:9px;letter-spacing:2px;color:var(--text-secondary);text-transform:uppercase;}
+.pval{font-size:12px;font-weight:500;color:var(--text-primary);}
+.hotels{padding:44px 60px;max-width:1400px;margin:0 auto;}
+.sec-hdr{display:flex;align-items:center;gap:20px;margin-bottom:40px;}
+.sec-line{height:1px;background:linear-gradient(90deg,var(--blue),transparent);flex:1;}
+.sec-title{font-size:13px;font-weight:600;letter-spacing:4px;text-transform:uppercase;white-space:nowrap;color:var(--dark);}
+.card{background:var(--bg-card);border:1px solid var(--border);margin-bottom:28px;position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;}
+.card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(0,120,210,0.10);}
+.card.top{border-color:var(--blue);border-width:2px;}
+.card.top::before{content:'RECOMENDAÇÃO PRINCIPAL';position:absolute;top:20px;left:0;background:var(--blue);color:#ffffff;font-size:9px;font-weight:700;letter-spacing:3px;padding:6px 16px;z-index:10;}
+.inner{display:grid;grid-template-columns:400px 1fr;}
+.img-wrap{position:relative;overflow:hidden;height:300px;}
+.img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.card:hover .img-wrap img{transform:scale(1.04);}
+.rank{position:absolute;top:18px;right:18px;width:38px;height:38px;background:var(--blue);color:#ffffff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.content{padding:28px 34px;display:flex;flex-direction:column;justify-content:space-between;}
+.chdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+.hname{font-size:22px;font-weight:600;line-height:1.25;max-width:380px;color:var(--dark);}
+.stars{color:var(--blue);font-size:11px;letter-spacing:2px;margin-top:4px;}
+.loc{font-size:10px;color:var(--text-secondary);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.loc::before{content:'';display:inline-block;width:6px;height:6px;background:var(--blue);border-radius:50%;}
+.badge{background:var(--blue);color:#ffffff;padding:10px 14px;text-align:center;min-width:68px;}
+.bnum{font-size:28px;font-weight:700;line-height:1;}
+.blbl{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:3px;opacity:.9;}
+.brev{font-size:9px;margin-top:2px;opacity:.75;}
+.subscores{display:flex;gap:14px;margin-bottom:14px;}
+.ss{display:flex;flex-direction:column;align-items:center;border:1px solid var(--border);padding:7px 10px;}
+.ssv{font-size:16px;color:var(--blue);font-weight:700;line-height:1;}
+.ssn{font-size:8px;letter-spacing:1px;color:var(--text-secondary);text-transform:uppercase;margin-top:3px;}
+.hdesc{font-size:12px;color:var(--text-secondary);line-height:1.8;margin-bottom:18px;flex:1;}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
+.tag{border:1px solid var(--border);padding:4px 10px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--text-secondary);}
+.tag.g{border-color:var(--blue);color:var(--blue);background:var(--blue-light);}
+.footer-card{display:flex;justify-content:space-between;align-items:flex-end;padding-top:18px;border-top:1px solid var(--border);}
+.plabel2{font-size:9px;letter-spacing:2px;color:var(--text-secondary);text-transform:uppercase;}
+.price{font-size:28px;font-weight:600;line-height:1;color:var(--dark);}
+.pdetail{font-size:10px;color:var(--text-secondary);margin-top:2px;}
+.btn{background:var(--blue);color:#ffffff;text-decoration:none;padding:12px 26px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:background .2s;display:inline-block;}
+.btn:hover{background:#005fa3;}
+.footer{background:#ffffff;border-top:3px solid var(--blue);padding:30px 60px;display:flex;justify-content:space-between;align-items:center;}
+.fbrand{font-size:18px;font-weight:700;color:var(--blue);letter-spacing:4px;}
+.ftext{font-size:10px;color:var(--text-secondary);letter-spacing:.5px;text-align:center;}
+.fnote{font-size:10px;color:var(--text-secondary);text-align:right;}
+</style></head>
+<body>
+<header class="header">
+  <div>
+    <div class="brand">REDOMA<span>/</span>APEX</div>
+  </div>
+  <div class="header-right">
+    <div class="htitle">Seleção de Hotéis de Luxo</div>
+    <div class="hdate">Nova York · Midtown · Maio 2026 · Curadoria Exclusiva</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Curadoria Exclusiva · 5 Estrelas · Melhores Avaliações</div>
+  <h1>As Melhores Opções de <em>Nova York</em> — curadoria especial</h1>
+  <p class="hero-desc">Selecionamos as 5 melhores hospedagens de luxo na região de Midtown Manhattan, com base em avaliações reais de hóspedes, categoria 5 estrelas, café da manhã incluído e cancelamento gratuito. Período: 10 a 14 de maio de 2026 · 2 adultos.</p>
+</section>
+
+<div class="params">
+  <div class="param"><span class="pico">&#9656;</span><div><div class="plabel">Período</div><div class="pval">10–14 de Maio 2026 · 4 noites</div></div></div>
+  <div class="param"><span class="pico">&#9656;</span><div><div class="plabel">Hóspedes</div><div class="pval">2 adultos · Casal · 1 quarto</div></div></div>
+  <div class="param"><span class="pico">&#9656;</span><div><div class="plabel">Localização</div><div class="pval">Midtown Manhattan · Nova York</div></div></div>
+  <div class="param"><span class="pico">&#9656;</span><div><div class="plabel">Categoria</div><div class="pval">5 Estrelas · Melhores Avaliações</div></div></div>
+  <div class="param"><span class="pico">&#9656;</span><div><div class="plabel">Inclusos</div><div class="pval">Café da manhã + Cancelamento grátis</div></div></div>
+</div>
+
+<section class="hotels">
+  <div class="sec-hdr">
+    <div class="sec-title">Seleção Redoma/Apex</div>
+    <div class="sec-line"></div>
+    <span style="font-size:9px;color:var(--text-secondary);letter-spacing:2px;white-space:nowrap">ORDENADO POR AVALIAÇÃO DOS HÓSPEDES</span>
+  </div>
+
+  <!-- 1. WALDORF ASTORIA -->
+  <div class="card top">
+    <div class="inner">
+      <div class="img-wrap">
+        <img src="https://assets.hiltonstatic.com/hilton-asset-cache/image/upload/c_fill,w_800,h_600,q_85,f_auto,g_auto/Imagery/Property%20Photography/Waldorf%20Astoria/N/NYCWAWA/WANY-Architecture-JoeThomas-072025-v3-2.jpg" onerror="this.onerror=null;this.src='https://assets.hiltonstatic.com/hilton-asset-cache/image/upload/c_fill,w_800,h_600,q_85,f_auto,g_auto/Imagery/Property%20Photography/Waldorf%20Astoria/N/NYCWAWA/WANY-Architecture-JoeThomas-072025-v3-1.jpg'" alt="Waldorf Astoria New York">
+        <div class="rank">1</div>
+      </div>
+      <div class="content">
+        <div>
+          <div class="chdr">
+            <div>
+              <div class="hname">Waldorf Astoria<br>New York</div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <div class="badge">
+              <div class="bnum">9.5</div>
+              <div class="blbl">Excepcional</div>
+              <div class="brev">46 avaliações</div>
+            </div>
+          </div>
+          <div class="loc">301 Park Avenue · Midtown East · Manhattan, NY 10022</div>
+          <div class="subscores">
+            <div class="ss"><div class="ssv">9.8</div><div class="ssn">Localização</div></div>
+            <div class="ss"><div class="ssv">9.5</div><div class="ssn">Conforto</div></div>
+            <div class="ss"><div class="ssv">9.5</div><div class="ssn">Limpeza</div></div>
+            <div class="ss"><div class="ssv">10</div><div class="ssn">Wi-Fi</div></div>
+          </div>
+          <p class="hdesc">Um dos hotéis mais icônicos do mundo, recém renovado com maestria. O Waldorf Astoria combina herança Art Déco com modernidade absoluta. Localizado em Park Avenue, no coração de Midtown East, oferece spa de classe mundial, restaurantes premiados como o Bull &amp; Bear, concierge 24h e suítes atemporais. Certificado de Sustentabilidade.</p>
+          <div class="tags">
+            <span class="tag g">✓ Café da manhã incluído</span>
+            <span class="tag g">✓ Cancelamento grátis</span>
+            <span class="tag g">✓ Sem pré-pagamento</span>
+            <span class="tag">Spa World-Class</span>
+            <span class="tag">Bull &amp; Bear Restaurant</span>
+            <span class="tag">Art Déco Histórico</span>
+            <span class="tag">Park Avenue</span>
+          </div>
+        </div>
+        <div class="footer-card">
+          <div>
+            <div class="plabel2">A partir de · 4 noites · 2 adultos</div>
+            <div class="price">R$ 38.284</div>
+            <div class="pdetail">+R$ 5.716 em impostos e taxas · ~R$ 9.571/noite</div>
+          </div>
+          <a href="https://www.booking.com/hotel/us/the-waldorf-astoria.pt-br.html?checkin=2026-05-10&amp;checkout=2026-05-14&amp;group_adults=2&amp;no_rooms=1&amp;group_children=0" target="_blank" class="btn">Verificar Disponibilidade</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. THE LANGHAM -->
+  <div class="card">
+    <div class="inner">
+      <div class="img-wrap">
+        <img src="https://images.trvl-media.com/lodging/4000000/3630000/3630000/3629903/47e7ae5c.jpg?impolicy=resizecrop&rw=800&ra=fit" onerror="this.onerror=null;this.src='https://images.trvl-media.com/lodging/4000000/3630000/3630000/3629903/580bf07b.jpg?impolicy=resizecrop&rw=800&ra=fit'" alt="The Langham New York Fifth Avenue">
+        <div class="rank">2</div>
+      </div>
+      <div class="content">
+        <div>
+          <div class="chdr">
+            <div>
+              <div class="hname">The Langham, New York<br>Fifth Avenue</div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <div class="badge">
+              <div class="bnum">9.1</div>
+              <div class="blbl">Fantástico</div>
+              <div class="brev">479 avaliações</div>
+            </div>
+          </div>
+          <div class="loc">400 Fifth Avenue · Bryant Park · Manhattan, NY 10018</div>
+          <div class="subscores">
+            <div class="ss"><div class="ssv">9.5</div><div class="ssn">Localização</div></div>
+            <div class="ss"><div class="ssv">9.5</div><div class="ssn">Staff</div></div>
+            <div class="ss"><div class="ssv">9.3</div><div class="ssn">Conforto</div></div>
+            <div class="ss"><div class="ssv">9.4</div><div class="ssn">Limpeza</div></div>
+          </div>
+          <p class="hdesc">Localizado entre o Bryant Park e o Empire State Building, o Langham representa a elegância britânica no coração de Manhattan. Quarto VIP Executivo com cama king-size e suíte privativa. O premiado restaurante Ai Fiori serve culinária italiana refinada. Certificado de Sustentabilidade. Clientes fiéis que retornam acima da média do mercado.</p>
+          <div class="tags">
+            <span class="tag g">✓ Café da manhã incluído</span>
+            <span class="tag g">✓ Cancelamento grátis</span>
+            <span class="tag">Restaurante Ai Fiori</span>
+            <span class="tag">Bryant Park View</span>
+            <span class="tag">Serviço Noturno</span>
+            <span class="tag">Certificado Sust.</span>
+          </div>
+        </div>
+        <div class="footer-card">
+          <div>
+            <div class="plabel2">A partir de · 4 noites · 2 adultos</div>
+            <div class="price">R$ 35.312</div>
+            <div class="pdetail">+R$ 5.278 em impostos e taxas · ~R$ 8.828/noite</div>
+          </div>
+          <a href="https://www.booking.com/hotel/us/langham-new-york-fifth-avenue.pt-br.html?checkin=2026-05-10&amp;checkout=2026-05-14&amp;group_adults=2&amp;no_rooms=1&amp;group_children=0" target="_blank" class="btn">Verificar Disponibilidade</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. PENDRY MANHATTAN WEST -->
+  <div class="card">
+    <div class="inner">
+      <div class="img-wrap">
+        <img src="https://uploads.pendry.com/redesign/wp-content/uploads/sites/5/2023/09/26121031/PMW-Rooms.jpg" onerror="this.onerror=null;this.src='https://uploads.pendry.com/redesign/wp-content/uploads/sites/5/2023/09/26121025/PMW-Dining.jpg'" alt="Pendry Manhattan West">
+        <div class="rank">3</div>
+      </div>
+      <div class="content">
+        <div>
+          <div class="chdr">
+            <div>
+              <div class="hname">Pendry Manhattan West</div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <div class="badge">
+              <div class="bnum">8.9</div>
+              <div class="blbl">Fabuloso</div>
+              <div class="brev">166 avaliações</div>
+            </div>
+          </div>
+          <div class="loc">438 W 36th Street · Hudson Yards · Manhattan, NY 10018</div>
+          <div class="subscores">
+            <div class="ss"><div class="ssv">9.2</div><div class="ssn">Limpeza</div></div>
+            <div class="ss"><div class="ssv">9.1</div><div class="ssn">Conforto</div></div>
+            <div class="ss"><div class="ssv">9.0</div><div class="ssn">Staff</div></div>
+            <div class="ss"><div class="ssv">8.9</div><div class="ssn">Localização</div></div>
+          </div>
+          <p class="hdesc">O Pendry Manhattan West é um dos hotéis mais modernos e desejados de Nova York. Localizado em Hudson Yards, o bairro mais novo e fashionable da cidade, combina design contemporâneo de altíssimo nível com gastronomia premium. Acesso próximo ao The Edge (mirante) e High Line. Estúdio com Alcova, ideal para casais.</p>
+          <div class="tags">
+            <span class="tag g">✓ Café da manhã incluído</span>
+            <span class="tag g">✓ Cancelamento grátis</span>
+            <span class="tag g">✓ Sem pré-pagamento</span>
+            <span class="tag">Design Contemporâneo</span>
+            <span class="tag">Hudson Yards</span>
+            <span class="tag">Próximo ao High Line</span>
+          </div>
+        </div>
+        <div class="footer-card">
+          <div>
+            <div class="plabel2">A partir de · 4 noites · 2 adultos</div>
+            <div class="price">R$ 45.589</div>
+            <div class="pdetail">+R$ 6.794 em impostos e taxas · ~R$ 11.397/noite</div>
+          </div>
+          <a href="https://www.booking.com/hotel/us/pendry-manhattan-west.pt-br.html?checkin=2026-05-10&amp;checkout=2026-05-14&amp;group_adults=2&amp;no_rooms=1&amp;group_children=0" target="_blank" class="btn">Verificar Disponibilidade</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. TIMES SQUARE EDITION -->
+  <div class="card">
+    <div class="inner">
+      <div class="img-wrap">
+        <img src="https://www.editionhotels.com/wp-content/uploads/2019/05/EDITION_TimesSquare_Entrance.jpg" onerror="this.onerror=null;this.src='https://www.editionhotels.com/wp-content/uploads/2025/03/EDITION_TimesSquare_BalconySuite_Day.jpg'" alt="The Times Square EDITION New York">
+        <div class="rank">4</div>
+      </div>
+      <div class="content">
+        <div>
+          <div class="chdr">
+            <div>
+              <div class="hname">The Times Square<br>EDITION New York</div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <div class="badge">
+              <div class="bnum">8.5</div>
+              <div class="blbl">Muito Bom</div>
+              <div class="brev">788 avaliações</div>
+            </div>
+          </div>
+          <div class="loc">701 Seventh Avenue · Times Square · Manhattan, NY 10036</div>
+          <div class="subscores">
+            <div class="ss"><div class="ssv">9.7</div><div class="ssn">Localização</div></div>
+            <div class="ss"><div class="ssv">9.0</div><div class="ssn">Café Manhã</div></div>
+            <div class="ss"><div class="ssv">9.2</div><div class="ssn">Limpeza</div></div>
+            <div class="ss"><div class="ssv">8.8</div><div class="ssn">Conforto</div></div>
+          </div>
+          <p class="hdesc">No epicentro do mundo, o EDITION Times Square por Marriott combina glamour noturno da Broadway com design refinado. A King Suite com vista simultânea para Times Square e Rio Hudson é uma experiência visual inesquecível. O café da manhã é excepcionalmente bem avaliado (nota 9.0). Ideal para casais que desejam estar no coração absoluto de Nova York.</p>
+          <div class="tags">
+            <span class="tag g">✓ Café da manhã (nota 9.0)</span>
+            <span class="tag g">✓ Cancelamento grátis</span>
+            <span class="tag g">✓ Sem pré-pagamento</span>
+            <span class="tag">Vista Times Square</span>
+            <span class="tag">Vista Rio Hudson</span>
+            <span class="tag">Localização 9.7</span>
+          </div>
+        </div>
+        <div class="footer-card">
+          <div>
+            <div class="plabel2">A partir de · 4 noites · 2 adultos</div>
+            <div class="price">R$ 32.836</div>
+            <div class="pdetail">+R$ 5.822 em impostos e taxas · ~R$ 8.209/noite</div>
+          </div>
+          <a href="https://www.booking.com/hotel/us/edition-the-times-square.pt-br.html?checkin=2026-05-10&amp;checkout=2026-05-14&amp;group_adults=2&amp;no_rooms=1&amp;group_children=0" target="_blank" class="btn">Verificar Disponibilidade</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. THE KNICKERBOCKER -->
+  <div class="card">
+    <div class="inner">
+      <div class="img-wrap">
+        <img src="https://www.theknickerbocker.com/content/uploads/2026/01/The-Knickerbocker-2-B-scaled.jpg" onerror="this.onerror=null;this.src='https://www.theknickerbocker.com/content/uploads/2025/11/03_Premier-King-1.jpg'" alt="The Knickerbocker Hotel">
+        <div class="rank">5</div>
+      </div>
+      <div class="content">
+        <div>
+          <div class="chdr">
+            <div>
+              <div class="hname">The Knickerbocker Hotel</div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <div class="badge">
+              <div class="bnum">8.5</div>
+              <div class="blbl">Muito Bom</div>
+              <div class="brev">2.159 avaliações</div>
+            </div>
+          </div>
+          <div class="loc">6 Times Square · 42nd Street · Manhattan, NY 10036</div>
+          <div class="subscores">
+            <div class="ss"><div class="ssv">9.5</div><div class="ssn">Localização</div></div>
+            <div class="ss"><div class="ssv">8.8</div><div class="ssn">Conforto</div></div>
+            <div class="ss"><div class="ssv">8.7</div><div class="ssn">Limpeza</div></div>
+            <div class="ss"><div class="ssv">8.7</div><div class="ssn">Staff</div></div>
+          </div>
+          <p class="hdesc">Ícone histórico de Nova York desde 1906, o Knickerbocker foi completamente renovado mantendo todo o charme clássico. É o hotel com maior número de avaliações positivas entre os selecionados (2.159), garantindo máxima consistência no serviço. O rooftop bar St. Cloud oferece vista 360° para Manhattan. Quarto Premier King com vista da cidade.</p>
+          <div class="tags">
+            <span class="tag g">✓ Café da manhã incluído</span>
+            <span class="tag g">✓ Cancelamento grátis</span>
+            <span class="tag">Rooftop Bar St. Cloud</span>
+            <span class="tag">Histórico desde 1906</span>
+            <span class="tag">2.159 Avaliações</span>
+            <span class="tag">Certificado Sust.</span>
+          </div>
+        </div>
+        <div class="footer-card">
+          <div>
+            <div class="plabel2">A partir de · 4 noites · 2 adultos</div>
+            <div class="price">R$ 13.323</div>
+            <div class="pdetail">+R$ 3.057 em impostos e taxas · ~R$ 3.331/noite</div>
+          </div>
+          <a href="https://www.booking.com/hotel/us/the-knickerbocker.pt-br.html?checkin=2026-05-10&amp;checkout=2026-05-14&amp;group_adults=2&amp;no_rooms=1&amp;group_children=0" target="_blank" class="btn">Verificar Disponibilidade</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div class="fbrand">REDOMA/APEX</div>
+  <div class="ftext">Todos os preços em BRL para 4 noites · 2 adultos · Sujeito à disponibilidade · Dados extraídos de Booking.com em 24/04/2026<br>Filtros aplicados: 5★ · Café da manhã incluído · Cancelamento grátis · Ordenado por melhores avaliações</div>
+  <div class="fnote">Curadoria Redoma/Apex<br>2026</div>
+</footer></body></html>
