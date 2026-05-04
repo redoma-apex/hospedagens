@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JHON JHON – Seleção de Hospedagem | REDOMA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-primary: #0078D2;
+      --blue-dark:    #002060;
+      --blue-mid:     #0A489B;
+      --blue-light1:  #8CBCE8;
+      --blue-light2:  #DAE3F3;
+      --neutral-bg:   #F6F6F6;
+      --white:        #FFFFFF;
+      --black:        #000000;
+      --warning:      #c8820a;
+      --shadow:       0 2px 14px rgba(0,32,96,0.07);
+      --shadow-hover: 0 10px 36px rgba(0,32,96,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Manrope', 'Segoe UI', sans-serif;
+      background: var(--neutral-bg);
+      color: var(--black);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ─────────────────────────────────────── */
+    .header {
+      background: var(--blue-dark);
+      padding: 64px 48px 52px;
+      text-align: center;
+    }
+    .header-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      color: var(--blue-light1);
+      text-transform: uppercase;
+      margin-bottom: 22px;
+      display: block;
+    }
+    .header-title {
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--white);
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+    .header-sub {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--blue-light2);
+      margin-bottom: 6px;
+    }
+    .header-period {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue-light1);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .header-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--blue-primary);
+      margin: 28px auto 0;
+    }
+
+    /* ── STATS BAR ───────────────────────────────────── */
+    .stats-bar {
+      background: var(--blue-primary);
+      display: flex;
+      justify-content: center;
+    }
+    .stat-item {
+      flex: 1;
+      max-width: 260px;
+      padding: 26px 20px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.14);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .stat-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--blue-light2);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    /* ── FILTERS ─────────────────────────────────────── */
+    .filters-wrap {
+      background: var(--white);
+      border-bottom: 1px solid var(--blue-light2);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .filters-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .filter-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-mid);
+      margin-right: 6px;
+    }
+    .filter-btn {
+      padding: 7px 18px;
+      border-radius: 20px;
+      border: 1.5px solid var(--blue-light2);
+      background: var(--blue-light2);
+      color: var(--blue-dark);
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s;
+      letter-spacing: 0.03em;
+    }
+    .filter-btn:hover {
+      border-color: var(--blue-primary);
+      color: var(--blue-primary);
+      background: var(--blue-light2);
+    }
+    .filter-btn.active {
+      background: var(--blue-primary);
+      border-color: var(--blue-primary);
+      color: var(--white);
+    }
+    .filter-count {
+      font-size: 10px;
+      font-weight: 400;
+      opacity: 0.7;
+      margin-left: 2px;
+    }
+
+    /* ── SECTION WRAPPER ─────────────────────────────── */
+    .section-wrap {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 40px 32px 56px;
+    }
+    .section-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-mid);
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    /* ── CARDS GRID ──────────────────────────────────── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    /* ── CARD ────────────────────────────────────────── */
+    .card {
+      background: var(--white);
+      border-radius: 7px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+    .card.hidden { display: none; }
+
+    /* photo */
+    .card-photo {
+      position: relative;
+      height: 215px;
+      overflow: hidden;
+      background: var(--blue-light2);
+      flex-shrink: 0;
+    }
+    .card-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s;
+    }
+    .card:hover .card-photo img { transform: scale(1.05); }
+    .card-photo .ph {
+      position: absolute; inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue-light2);
+    }
+
+    .badge-platform {
+      position: absolute;
+      top: 11px; right: 11px;
+      background: var(--white);
+      color: var(--blue-dark);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 3px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.18);
+    }
+    .badge-city {
+      position: absolute;
+      bottom: 11px; left: 11px;
+      background: rgba(0,32,96,0.82);
+      color: var(--white);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 3px;
+      backdrop-filter: blur(4px);
+    }
+    .badge-fav {
+      position: absolute;
+      top: 11px; left: 11px;
+      background: var(--blue-primary);
+      color: var(--white);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 3px;
+    }
+
+    /* body */
+    .card-body {
+      padding: 22px 22px 0;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 7px;
+      line-height: 1.3;
+    }
+    .card-loc {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: #777;
+      margin-bottom: 13px;
+      font-weight: 500;
+    }
+
+    /* specs row */
+    .specs {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 13px;
+    }
+    .spec {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue-mid);
+    }
+
+    /* rating */
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+    .stars { display: flex; gap: 1px; line-height: 1; }
+    .s-full  { color: #F5A623; font-size: 13px; }
+    .s-empty { color: #D8D8D8; font-size: 13px; }
+    .r-score { font-size: 13px; font-weight: 700; color: var(--blue-dark); }
+    .r-count { font-size: 11px; color: #999; }
+    .no-rating { font-size: 11px; color: #aaa; font-style: italic; }
+
+    /* amenities */
+    .amenities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 15px;
+    }
+    .am-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--blue-light2);
+      color: var(--blue-mid);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.01em;
+    }
+
+    /* highlights */
+    .highlights { margin-bottom: 15px; }
+    .hl {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 11px;
+      color: #444;
+      margin-bottom: 5px;
+      line-height: 1.45;
+    }
+    .hl-icon { flex-shrink: 0; margin-top: 1px; font-style: normal; font-size: 11px; }
+    .hl.pos .hl-icon { color: var(--blue-primary); }
+    .hl.neg .hl-icon { color: var(--warning); }
+
+    /* divider */
+    .hr { height: 1px; background: var(--blue-light2); margin: 14px 0; }
+
+    /* footer row */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px 20px;
+      margin-top: auto;
+    }
+    .price-block { display: flex; flex-direction: column; }
+    .price-val {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--blue-primary);
+      line-height: 1.1;
+    }
+    .price-per {
+      font-size: 10px;
+      font-weight: 500;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+    }
+    .price-na { font-size: 11px; color: #bbb; font-style: italic; }
+
+    .btn-see {
+      display: inline-block;
+      padding: 9px 18px;
+      background: var(--blue-dark);
+      color: var(--white);
+      font-family: 'Manrope', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.18s;
+      white-space: nowrap;
+    }
+    .btn-see:hover { background: var(--blue-primary); }
+
+    /* obs note */
+    .card-obs {
+      font-size: 10px;
+      color: #888;
+      background: #FAFBFD;
+      border-left: 3px solid var(--blue-light1);
+      padding: 7px 10px;
+      margin: 0 22px 20px;
+      border-radius: 0 4px 4px 0;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--blue-dark);
+      padding: 52px 32px 44px;
+      text-align: center;
+    }
+    .ft-logo {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.32em;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .ft-group {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--blue-light1);
+      letter-spacing: 0.1em;
+      margin-bottom: 28px;
+    }
+    .ft-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      max-width: 360px;
+      margin: 0 auto 22px;
+    }
+    .ft-caption {
+      font-size: 11px;
+      color: var(--blue-light2);
+      margin-bottom: 8px;
+    }
+    .ft-disclaimer {
+      font-size: 9px;
+      color: rgba(140,188,232,0.6);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+      .header { padding: 44px 20px 40px; }
+      .header-title { font-size: 34px; letter-spacing: 0.08em; }
+      .section-wrap { padding: 28px 16px 44px; }
+      .filters-inner { padding: 14px 16px; }
+      .stat-number { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════════════ -->
+<header class="header">
+  <span class="header-eyebrow">Curadoria Exclusiva de Hospedagem</span>
+  <h1 class="header-title">JHON JHON</h1>
+  <p class="header-sub">Vila Velha, ES — Brasil</p>
+  <p class="header-period">19 Maio – 17 Julho 2026</p>
+  <div class="header-rule"></div>
+</header>
+
+<!-- ══ STATS ═══════════════════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">8</div>
+    <div class="stat-label">Opções Selecionadas</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">10</div>
+    <div class="stat-label">Hóspedes (máx.)</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">29</div>
+    <div class="stat-label">Noites</div>
+  </div>
+</div>
+
+<!-- ══ FILTERS ═════════════════════════════════════════════════════ -->
+<div class="filters-wrap">
+  <div class="filters-inner">
+    <span class="filter-eyebrow">Região:</span>
+    <button class="filter-btn active" onclick="filterCards('all', this)">Todas <span class="filter-count">8</span></button>
+    <button class="filter-btn" onclick="filterCards('vila-velha', this)">Vila Velha <span class="filter-count">3</span></button>
+    <button class="filter-btn" onclick="filterCards('vitoria', this)">Vitória <span class="filter-count">3</span></button>
+    <button class="filter-btn" onclick="filterCards('guarapari', this)">Guarapari <span class="filter-count">2</span></button>
+  </div>
+</div>
+
+<!-- ══ MAIN ═════════════════════════════════════════════════════════ -->
+<main>
+  <div class="section-wrap">
+    <p class="section-eyebrow">Residências Selecionadas</p>
+    <p class="section-desc">Ordenadas por proximidade de Vila Velha, ES — da mais próxima para a mais distante.</p>
+
+    <div class="cards-grid" id="cardsGrid">
+
+      <!-- ────────────────────────────────────────────────────────── -->
+      <!-- CARD 1 · Vila Velha · Vista privilegiada do mar            -->
+      <!-- ────────────────────────────────────────────────────────── -->
+      <div class="card" data-city="vila-velha">
+        <div class="card-photo">
+          <img src="https://a0.muscache.com/im/pictures/miso/Hosting-956580381763015785/original/defd82fa-1a41-46c8-a638-37bd76cff5e2.jpeg?im_w=720"
+               alt="Vista privilegiada do mar"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="2" stroke="#8CBCE8" stroke-width="1.4"/><path d="M2 10h20" stroke="#8CBCE8" stroke-width="1.4"/><circle cx="12" cy="15" r="2" fill="#8CBCE8"/></svg>
+          </div>
+          <div class="badge-fav">Preferido dos hóspedes</div>
+          <div class="badge-platform">Airbnb</div>
+          <div class="badge-city">Vila Velha, ES</div>
+        </div>
+
+        <div class="card-body">
+          <h2 class="card-name">Vista privilegiada do mar</h2>
+          <p class="card-loc">
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="none"><path d="M5.5 0C3.02 0 1 2.01 1 4.49c0 3.38 4.5 8.11 4.5 8.11S10 7.87 10 4.49C10 2.01 7.98 0 5.5 0zm0 6.08a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2z" fill="#8CBCE8"/></svg>
+            Morro do Moreno, Vila Velha, ES
+          </p>
+          <div class="specs">
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z" fill="#0A489B"/></svg>
+              8 hóspedes
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 9V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2" stroke="#0A489B" stroke-width="1.6"/><path d="M2 14v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-3" stroke="#0A489B" stroke-width="1.6"/><path d="M2 11h20" stroke="#0A489B" stroke-width="1.6"/><path d="M9 11V9" stroke="#0A489B" stroke-width="1.6"/></svg>
+              3 quartos
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12c0 4.42 3.58 8 8 8s8-3.58 8-8M4 12c0-1.85.63-3.55 1.68-4.9" stroke="#0A489B" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="5" r="2" stroke="#0A489B" stroke-width="1.6"/></svg>
+              3,5 banheiros
+            </span>
+          </div>
+          <div class="rating-row">
+            <div class="stars">
+              <span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span>
+            </div>
+            <span class="r-score">4,94</span>
+            <span class="r-count">(32 avaliações)</span>
+          </div>
+          <div class="amenities">
+            <span class="am-tag">🏊 Piscina privativa</span>
+            <span class="am-tag">🌊 Jacuzzi</span>
+            <span class="am-tag">🔥 Sauna</span>
+            <span class="am-tag">📶 Wi-Fi</span>
+            <span class="am-tag">🚗 Estacionamento</span>
+            <span class="am-tag">🥩 Churrasqueira</span>
+            <span class="am-tag">🍳 Cozinha</span>
+          </div>
+          <div class="highlights">
+            <div class="hl pos"><span class="hl-icon">✓</span>Vista deslumbrante para o mar — destaque em 19 avaliações</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Anfitriã Cris: extremamente atenciosa e flexível</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Trilha ecológica, Praia do Bananal a 3 min e Praia da Costa a 800m</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Área gourmet com churrasqueira e forno a lenha</div>
+            <div class="hl neg"><span class="hl-icon">⚠</span>Hidromassagem em manutenção no período — informado pelo anfitrião</div>
+            <div class="hl neg"><span class="hl-icon">⚠</span>Não indicada para crianças pequenas (escadas sem proteção)</div>
+          </div>
+          <div class="hr"></div>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <span class="price-val">R$ 30.739</span>
+            <span class="price-per">por mês · 29 noites</span>
+          </div>
+          <a href="https://www.airbnb.com.br/rooms/956580381763015785?check_in=2026-05-19&check_out=2026-06-17&guests=1&adults=4&s=67&unique_share_id=ac2615b8-21b3-41ce-865a-51c4222e989a" target="_blank" class="btn-see">Ver Imóvel</a>
+        </div>
+        <div class="card-obs">94% das avaliações são 5 estrelas. Imóvel no Morro do Moreno (APA), acesso à Praia do Bananal e Praia da Costa.</div>
+      </div>
+
+      <!-- ────────────────────────────────────────────────────────── -->
+      <!-- CARD 2 · Vila Velha · Casa Floresta e Mar                  -->
+      <!-- ────────────────────────────────────────────────────────── -->
+      <div class="card" data-city="vila-velha">
+        <div class="card-photo">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1293038688747839971/original/35c91ecd-39c0-45aa-876b-bfab7095627b.jpeg?im_w=720"
+               alt="Casa Floresta e Mar"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="2" stroke="#8CBCE8" stroke-width="1.4"/><path d="M2 10h20" stroke="#8CBCE8" stroke-width="1.4"/><circle cx="12" cy="15" r="2" fill="#8CBCE8"/></svg>
+          </div>
+          <div class="badge-fav">Preferido dos hóspedes</div>
+          <div class="badge-platform">Airbnb</div>
+          <div class="badge-city">Vila Velha, ES</div>
+        </div>
+
+        <div class="card-body">
+          <h2 class="card-name">Casa Floresta e Mar</h2>
+          <p class="card-loc">
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="none"><path d="M5.5 0C3.02 0 1 2.01 1 4.49c0 3.38 4.5 8.11 4.5 8.11S10 7.87 10 4.49C10 2.01 7.98 0 5.5 0zm0 6.08a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2z" fill="#8CBCE8"/></svg>
+            Morro do Moreno (APA), Vila Velha, ES
+          </p>
+          <div class="specs">
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z" fill="#0A489B"/></svg>
+              6 hóspedes
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 9V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2" stroke="#0A489B" stroke-width="1.6"/><path d="M2 14v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-3" stroke="#0A489B" stroke-width="1.6"/><path d="M2 11h20" stroke="#0A489B" stroke-width="1.6"/><path d="M9 11V9" stroke="#0A489B" stroke-width="1.6"/></svg>
+              4 quartos
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12c0 4.42 3.58 8 8 8s8-3.58 8-8M4 12c0-1.85.63-3.55 1.68-4.9" stroke="#0A489B" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="5" r="2" stroke="#0A489B" stroke-width="1.6"/></svg>
+              4,5 banheiros
+            </span>
+          </div>
+          <div class="rating-row">
+            <div class="stars">
+              <span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span>
+            </div>
+            <span class="r-score">5,0</span>
+            <span class="r-count">(13 avaliações)</span>
+          </div>
+          <div class="amenities">
+            <span class="am-tag">🏊 Piscina 24h</span>
+            <span class="am-tag">🌊 Acesso à praia</span>
+            <span class="am-tag">📶 Wi-Fi</span>
+            <span class="am-tag">🚗 4 vagas</span>
+            <span class="am-tag">📺 TV 75"</span>
+            <span class="am-tag">❄️ Ar-condicionado</span>
+            <span class="am-tag">🥩 Churrasqueira</span>
+          </div>
+          <div class="highlights">
+            <div class="hl pos"><span class="hl-icon">✓</span>Nota máxima 5,0 — 100% das avaliações de 5 estrelas</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Vista para o mar de tirar o fôlego, destacada por vários hóspedes</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>APA Morro do Moreno com trilha ecológica — praia a apenas 30m</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Superhost com 1 ano de hospedagem, anfitriã muito atenciosa</div>
+          </div>
+          <div class="hr"></div>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <span class="price-val">R$ 69.225</span>
+            <span class="price-per">por mês · 29 noites</span>
+          </div>
+          <a href="https://www.airbnb.com.br/rooms/1293038688747839971?check_in=2026-05-19&check_out=2026-06-17&guests=1&adults=4&s=67&unique_share_id=c90cb090-9111-4758-b1e9-890a1cc52307" target="_blank" class="btn-see">Ver Imóvel</a>
+        </div>
+        <div class="card-obs">Sofá-cama na sala de estar. Capacidade máxima conforme regras: 6 hóspedes.</div>
+      </div>
+
+      <!-- ────────────────────────────────────────────────────────── -->
+      <!-- CARD 3 · Vila Velha · Casa Ampla e Sofisticada             -->
+      <!-- ────────────────────────────────────────────────────────── -->
+      <div class="card" data-city="vila-velha">
+        <div class="card-photo">
+          <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1044195772166229291/original/ec51f3ea-b8b7-4dbf-ba59-a073c785e608.jpeg?im_w=720"
+               alt="Casa Ampla e Sofisticada"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="2" stroke="#8CBCE8" stroke-width="1.4"/><path d="M2 10h20" stroke="#8CBCE8" stroke-width="1.4"/><circle cx="12" cy="15" r="2" fill="#8CBCE8"/></svg>
+          </div>
+          <div class="badge-platform">Airbnb</div>
+          <div class="badge-city">Vila Velha, ES</div>
+        </div>
+
+        <div class="card-body">
+          <h2 class="card-name">Casa Ampla e Sofisticada | Praia da Costa | Até 10</h2>
+          <p class="card-loc">
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="none"><path d="M5.5 0C3.02 0 1 2.01 1 4.49c0 3.38 4.5 8.11 4.5 8.11S10 7.87 10 4.49C10 2.01 7.98 0 5.5 0zm0 6.08a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2z" fill="#8CBCE8"/></svg>
+            Praia da Costa, Vila Velha, ES
+          </p>
+          <div class="specs">
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z" fill="#0A489B"/></svg>
+              10 hóspedes
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 9V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2" stroke="#0A489B" stroke-width="1.6"/><path d="M2 14v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-3" stroke="#0A489B" stroke-width="1.6"/><path d="M2 11h20" stroke="#0A489B" stroke-width="1.6"/><path d="M9 11V9" stroke="#0A489B" stroke-width="1.6"/></svg>
+              4 quartos
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12c0 4.42 3.58 8 8 8s8-3.58 8-8M4 12c0-1.85.63-3.55 1.68-4.9" stroke="#0A489B" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="5" r="2" stroke="#0A489B" stroke-width="1.6"/></svg>
+              6 banheiros
+            </span>
+          </div>
+          <div class="rating-row">
+            <div class="stars">
+              <span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span>
+            </div>
+            <span class="r-score">5,0</span>
+            <span class="r-count">(2 avaliações)</span>
+          </div>
+          <div class="amenities">
+            <span class="am-tag">🏊 Piscina c/ cascata</span>
+            <span class="am-tag">🌊 Acesso à praia</span>
+            <span class="am-tag">📶 Wi-Fi</span>
+            <span class="am-tag">🚗 Estacionamento</span>
+            <span class="am-tag">❄️ Ar-condicionado</span>
+            <span class="am-tag">🥩 Churrasqueira</span>
+            <span class="am-tag">🍽️ Área gourmet</span>
+          </div>
+          <div class="highlights">
+            <div class="hl pos"><span class="hl-icon">✓</span>750m² — 4 suítes, salas em dois andares, lounge e área gourmet</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Piscina com cascata, área gramada e varandas nos dois andares</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Vista para a Baía de Vitória e queima de fogos</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>5 min a pé da Praia Secreta e Praia da Costa — anfitriã muito atenciosa</div>
+          </div>
+          <div class="hr"></div>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <span class="price-val">R$ 71.680</span>
+            <span class="price-per">por mês · 29 noites</span>
+          </div>
+          <a href="https://www.airbnb.com.br/rooms/1044195772166229291?check_in=2026-05-19&check_out=2026-06-17&guests=1&adults=4&s=67&unique_share_id=9f594649-d659-4f88-bd9e-8560c1481c08" target="_blank" class="btn-see">Ver Imóvel</a>
+        </div>
+        <div class="card-obs">Apenas 2 avaliações (nota 5,0). Anfitriã Neide oferece desconto para o período. Preço original: R$85.080/mês.</div>
+      </div>
+
+      <!-- ────────────────────────────────────────────────────────── -->
+      <!-- CARD 4 · Vitória · Casa Ilha do Boi — vista para a ponte   -->
+      <!-- ────────────────────────────────────────────────────────── -->
+      <div class="card" data-city="vitoria">
+        <div class="card-photo">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1581934170007001844/original/2f8e3358-3c17-4779-90d2-b3be0570cdbf.jpeg?im_w=720"
+               alt="Casa Ilha do Boi"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="2" stroke="#8CBCE8" stroke-width="1.4"/><path d="M2 10h20" stroke="#8CBCE8" stroke-width="1.4"/><circle cx="12" cy="15" r="2" fill="#8CBCE8"/></svg>
+          </div>
+          <div class="badge-platform">Airbnb</div>
+          <div class="badge-city">Vitória, ES</div>
+        </div>
+
+        <div class="card-body">
+          <h2 class="card-name">Casa Ilha do Boi — Vista para a Ponte Baía de Vitória</h2>
+          <p class="card-loc">
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="none"><path d="M5.5 0C3.02 0 1 2.01 1 4.49c0 3.38 4.5 8.11 4.5 8.11S10 7.87 10 4.49C10 2.01 7.98 0 5.5 0zm0 6.08a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2z" fill="#8CBCE8"/></svg>
+            Ilha do Boi, Vitória, ES (250m da Curva da Jurema)
+          </p>
+          <div class="specs">
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z" fill="#0A489B"/></svg>
+              12 hóspedes
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 9V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2" stroke="#0A489B" stroke-width="1.6"/><path d="M2 14v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-3" stroke="#0A489B" stroke-width="1.6"/><path d="M2 11h20" stroke="#0A489B" stroke-width="1.6"/><path d="M9 11V9" stroke="#0A489B" stroke-width="1.6"/></svg>
+              3 quartos
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12c0 4.42 3.58 8 8 8s8-3.58 8-8M4 12c0-1.85.63-3.55 1.68-4.9" stroke="#0A489B" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="5" r="2" stroke="#0A489B" stroke-width="1.6"/></svg>
+              3,5 banheiros
+            </span>
+          </div>
+          <div class="rating-row">
+            <span class="no-rating">Anúncio novo — sem avaliações ainda</span>
+          </div>
+          <div class="amenities">
+            <span class="am-tag">📶 Wi-Fi</span>
+            <span class="am-tag">❄️ Ar-condicionado</span>
+            <span class="am-tag">📺 TV</span>
+            <span class="am-tag">🍳 Cozinha</span>
+            <span class="am-tag">💼 Workspace</span>
+            <span class="am-tag">🐾 Aceita animais</span>
+          </div>
+          <div class="highlights">
+            <div class="hl pos"><span class="hl-icon">✓</span>Vista para a Terceira Ponte e Baía de Vitória</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>02 suítes confortáveis, linda sala de jantar e varanda com vista</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Casa grande com acesso fácil a praias da região</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Aceita animais de estimação</div>
+          </div>
+          <div class="hr"></div>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <span class="price-val">R$ 22.395</span>
+            <span class="price-per">por mês · 29 noites</span>
+          </div>
+          <a href="https://www.airbnb.com.br/rooms/1581934170007001844?check_in=2026-05-19&check_out=2026-06-17&guests=1&adults=4&s=67&unique_share_id=1d2df1f5-2b38-443e-b4c6-57289101b150" target="_blank" class="btn-see">Ver Imóvel</a>
+        </div>
+        <div class="card-obs">Tipologia: quarto privativo em casa (não espaço inteiro). Anfitriã hospeda há 4 meses. Preço original sem desconto: R$27.335/mês.</div>
+      </div>
+
+      <!-- ────────────────────────────────────────────────────────── -->
+      <!-- CARD 5 · Vitória · Casa Ilha — visual incrível             -->
+      <!-- ────────────────────────────────────────────────────────── -->
+      <div class="card" data-city="vitoria">
+        <div class="card-photo">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1411555866519493093/original/af987ec9-da2e-43c0-a8d4-c624d213d022.jpeg?im_w=720"
+               alt="Casa Ilha — visual incrível"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="2" stroke="#8CBCE8" stroke-width="1.4"/><path d="M2 10h20" stroke="#8CBCE8" stroke-width="1.4"/><circle cx="12" cy="15" r="2" fill="#8CBCE8"/></svg>
+          </div>
+          <div class="badge-platform">Airbnb</div>
+          <div class="badge-city">Vitória, ES</div>
+        </div>
+
+        <div class="card-body">
+          <h2 class="card-name">Casa Ilha — Visual Incrível e Natureza Exuberante</h2>
+          <p class="card-loc">
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="none"><path d="M5.5 0C3.02 0 1 2.01 1 4.49c0 3.38 4.5 8.11 4.5 8.11S10 7.87 10 4.49C10 2.01 7.98 0 5.5 0zm0 6.08a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2z" fill="#8CBCE8"/></svg>
+            Ilha do Boi (área nobre), Vitória, ES
+          </p>
+          <div class="specs">
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z" fill="#0A489B"/></svg>
+              8 hóspedes
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 9V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2" stroke="#0A489B" stroke-width="1.6"/><path d="M2 14v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-3" stroke="#0A489B" stroke-width="1.6"/><path d="M2 11h20" stroke="#0A489B" stroke-width="1.6"/><path d="M9 11V9" stroke="#0A489B" stroke-width="1.6"/></svg>
+              4 quartos
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12c0 4.42 3.58 8 8 8s8-3.58 8-8M4 12c0-1.85.63-3.55 1.68-4.9" stroke="#0A489B" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="5" r="2" stroke="#0A489B" stroke-width="1.6"/></svg>
+              1 banheiro
+            </span>
+          </div>
+          <div class="rating-row">
+            <span class="no-rating">Anúncio novo — sem avaliações neste imóvel</span>
+          </div>
+          <div class="amenities">
+            <span class="am-tag">🏊 Piscina</span>
+            <span class="am-tag">🌊 Acesso à praia</span>
+            <span class="am-tag">📶 Wi-Fi</span>
+            <span class="am-tag">🚗 Estacionamento</span>
+            <span class="am-tag">🔥 Sauna</span>
+            <span class="am-tag">🥩 Churrasqueira</span>
+            <span class="am-tag">🌿 Jardim tropical</span>
+          </div>
+          <div class="highlights">
+            <div class="hl pos"><span class="hl-icon">✓</span>Mansão de 1.200m² com vista deslumbrante para o mar</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Cartão-postal da cidade — área mais nobre da Ilha do Boi</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Piscina, churrasqueira, sauna e jardim tropical</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Perto das melhores praias, restaurantes e Shopping Vitória</div>
+            <div class="hl neg"><span class="hl-icon">⚠</span>Anfitrião Renzo: nota média 2,0 em outros imóveis — verificar referências</div>
+            <div class="hl neg"><span class="hl-icon">⚠</span>Política de cancelamento não reembolsável</div>
+          </div>
+          <div class="hr"></div>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <span class="price-val">R$ 81.599</span>
+            <span class="price-per">por mês · 29 noites</span>
+          </div>
+          <a href="https://www.airbnb.com.br/rooms/1411555866519493093?check_in=2026-05-19&check_out=2026-06-17&guests=1&adults=4&s=67&unique_share_id=3bdfe1f2-0ac1-4956-a1c4-8cf182173e98" target="_blank" class="btn-see">Ver Imóvel</a>
+        </div>
+        <div class="card-obs">Atenção: política de cancelamento não reembolsável. Preço original antes do desconto: R$154.399/mês. Confirmar avaliações do anfitrião.</div>
+      </div>
+
+      <!-- ────────────────────────────────────────────────────────── -->
+      <!-- CARD 6 · Vitória · Casa da Porta Amarela                   -->
+      <!-- ────────────────────────────────────────────────────────── -->
+      <div class="card" data-city="vitoria">
+        <div class="card-photo">
+          <img src="https://a0.muscache.com/im/pictures/2a435ef8-502d-4185-9a1d-29028b50a2f3.jpg?im_w=720"
+               alt="Casa da Porta Amarela"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="2" stroke="#8CBCE8" stroke-width="1.4"/><path d="M2 10h20" stroke="#8CBCE8" stroke-width="1.4"/><circle cx="12" cy="15" r="2" fill="#8CBCE8"/></svg>
+          </div>
+          <div class="badge-fav">Preferido dos hóspedes</div>
+          <div class="badge-platform">Airbnb</div>
+          <div class="badge-city">Vitória, ES</div>
+        </div>
+
+        <div class="card-body">
+          <h2 class="card-name">Casa da Porta Amarela · Infinity Pool, Bay Views</h2>
+          <p class="card-loc">
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="none"><path d="M5.5 0C3.02 0 1 2.01 1 4.49c0 3.38 4.5 8.11 4.5 8.11S10 7.87 10 4.49C10 2.01 7.98 0 5.5 0zm0 6.08a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2z" fill="#8CBCE8"/></svg>
+            APA Baía das Tartarugas, Ilha do Boi, Vitória, ES
+          </p>
+          <div class="specs">
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z" fill="#0A489B"/></svg>
+              10 hóspedes
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 9V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2" stroke="#0A489B" stroke-width="1.6"/><path d="M2 14v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-3" stroke="#0A489B" stroke-width="1.6"/><path d="M2 11h20" stroke="#0A489B" stroke-width="1.6"/><path d="M9 11V9" stroke="#0A489B" stroke-width="1.6"/></svg>
+              4 quartos
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12c0 4.42 3.58 8 8 8s8-3.58 8-8M4 12c0-1.85.63-3.55 1.68-4.9" stroke="#0A489B" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="5" r="2" stroke="#0A489B" stroke-width="1.6"/></svg>
+              3,5 banheiros
+            </span>
+          </div>
+          <div class="rating-row">
+            <div class="stars">
+              <span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span>
+            </div>
+            <span class="r-score">4,85</span>
+            <span class="r-count">(41 avaliações)</span>
+          </div>
+          <div class="amenities">
+            <span class="am-tag">♾️ Piscina infinita</span>
+            <span class="am-tag">🧖 Spa ao ar livre</span>
+            <span class="am-tag">⚓ Píer privativo</span>
+            <span class="am-tag">📶 Wi-Fi</span>
+            <span class="am-tag">🚗 2 vagas cobertas</span>
+            <span class="am-tag">🥩 Churrasqueira</span>
+            <span class="am-tag">🐢 APA Tartarugas</span>
+          </div>
+          <div class="highlights">
+            <div class="hl pos"><span class="hl-icon">✓</span>Piscina de borda infinita, spa, píer e deck no nível do mar</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>APA Baía das Tartarugas — possibilidade de observar tartarugas marinhas</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Anfitriã Tereza (arquiteta): casa projetada por ela, nível de hotel sofisticado</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Acesso a caiaque, lancha e jet ski pelo píer privativo</div>
+            <div class="hl neg"><span class="hl-icon">⚠</span>Governanta Sirlene: custo adicional (negociado diretamente)</div>
+          </div>
+          <div class="hr"></div>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <span class="price-val">R$ 104.353</span>
+            <span class="price-per">por mês · 29 noites</span>
+          </div>
+          <a href="https://www.airbnb.com.br/rooms/15214058?check_in=2026-05-19&check_out=2026-06-17&guests=10&adults=10&s=67&unique_share_id=2068f203-8faa-47b1-b77d-75be4ddab166" target="_blank" class="btn-see">Ver Imóvel</a>
+        </div>
+        <div class="card-obs">93% das avaliações são 5 estrelas. Disponível também para locação fotográfica. Preço original: R$127.553/mês.</div>
+      </div>
+
+      <!-- ────────────────────────────────────────────────────────── -->
+      <!-- CARD 7 · Guarapari · 200m da Praia                        -->
+      <!-- ────────────────────────────────────────────────────────── -->
+      <div class="card" data-city="guarapari">
+        <div class="card-photo">
+          <img src="https://a0.muscache.com/im/pictures/36ad65f3-abbc-49aa-982e-6b3efe3c5b80.jpg?im_w=720"
+               alt="200m da Praia"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="2" stroke="#8CBCE8" stroke-width="1.4"/><path d="M2 10h20" stroke="#8CBCE8" stroke-width="1.4"/><circle cx="12" cy="15" r="2" fill="#8CBCE8"/></svg>
+          </div>
+          <div class="badge-fav">Preferido dos hóspedes</div>
+          <div class="badge-platform">Airbnb</div>
+          <div class="badge-city">Guarapari (divisa VV), ES</div>
+        </div>
+
+        <div class="card-body">
+          <h2 class="card-name">200m da Praia — Piscina, Churrasqueira e Lazer</h2>
+          <p class="card-loc">
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="none"><path d="M5.5 0C3.02 0 1 2.01 1 4.49c0 3.38 4.5 8.11 4.5 8.11S10 7.87 10 4.49C10 2.01 7.98 0 5.5 0zm0 6.08a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2z" fill="#8CBCE8"/></svg>
+            Recanto da Sereia, Guarapari (divisa com Vila Velha), ES
+          </p>
+          <div class="specs">
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z" fill="#0A489B"/></svg>
+              13 hóspedes
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 9V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2" stroke="#0A489B" stroke-width="1.6"/><path d="M2 14v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-3" stroke="#0A489B" stroke-width="1.6"/><path d="M2 11h20" stroke="#0A489B" stroke-width="1.6"/><path d="M9 11V9" stroke="#0A489B" stroke-width="1.6"/></svg>
+              3 quartos
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12c0 4.42 3.58 8 8 8s8-3.58 8-8M4 12c0-1.85.63-3.55 1.68-4.9" stroke="#0A489B" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="5" r="2" stroke="#0A489B" stroke-width="1.6"/></svg>
+              3 banheiros
+            </span>
+          </div>
+          <div class="rating-row">
+            <div class="stars">
+              <span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span>
+            </div>
+            <span class="r-score">4,98</span>
+            <span class="r-count">(42 avaliações)</span>
+          </div>
+          <div class="amenities">
+            <span class="am-tag">🏊 Piscina privativa</span>
+            <span class="am-tag">🌊 Acesso à praia</span>
+            <span class="am-tag">📶 Wi-Fi</span>
+            <span class="am-tag">🚗 5 vagas</span>
+            <span class="am-tag">❄️ AC todos os quartos</span>
+            <span class="am-tag">🥩 Churrasqueira</span>
+            <span class="am-tag">🐾 Aceita animais</span>
+          </div>
+          <div class="highlights">
+            <div class="hl pos"><span class="hl-icon">✓</span>98% das avaliações são 5 estrelas — Superhost com excelente reputação</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Roupas de cama e banho inclusas, todos os utensílios</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Pula-pula, piscina e churrasqueira industrial — ideal para famílias</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Garagem para 5 carros, AC e cortinas black-out em todos os quartos</div>
+          </div>
+          <div class="hr"></div>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <span class="price-val">R$ 32.410</span>
+            <span class="price-per">por mês · 29 noites</span>
+          </div>
+          <a href="https://www.airbnb.com.br/rooms/547611169100300583?check_in=2026-05-19&check_out=2026-06-17&guests=1&adults=10&s=67&unique_share_id=7d1c3dca-c7d6-4576-831d-219824058c63" target="_blank" class="btn-see">Ver Imóvel</a>
+        </div>
+        <div class="card-obs">Localizado na divisa de Guarapari com Vila Velha, próximo ao Parque Estadual Paulo César Vinha. Sofá-cama disponível na sala.</div>
+      </div>
+
+      <!-- ────────────────────────────────────────────────────────── -->
+      <!-- CARD 8 · Guarapari · Mansão Condomínio Lagoa da Praia      -->
+      <!-- ────────────────────────────────────────────────────────── -->
+      <div class="card" data-city="guarapari">
+        <div class="card-photo">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1510437568951116991/original/8d41ad28-426b-426b-a2dd-8643e0e51e44.jpeg?im_w=720"
+               alt="Mansão em Guarapari"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="2" stroke="#8CBCE8" stroke-width="1.4"/><path d="M2 10h20" stroke="#8CBCE8" stroke-width="1.4"/><circle cx="12" cy="15" r="2" fill="#8CBCE8"/></svg>
+          </div>
+          <div class="badge-platform">Airbnb</div>
+          <div class="badge-city">Guarapari, ES</div>
+        </div>
+
+        <div class="card-body">
+          <h2 class="card-name">Mansão em Guarapari com Preço Justo e Acessível</h2>
+          <p class="card-loc">
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="none"><path d="M5.5 0C3.02 0 1 2.01 1 4.49c0 3.38 4.5 8.11 4.5 8.11S10 7.87 10 4.49C10 2.01 7.98 0 5.5 0zm0 6.08a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2z" fill="#8CBCE8"/></svg>
+            Condomínio Lagoa da Praia, Guarapari, ES
+          </p>
+          <div class="specs">
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z" fill="#0A489B"/></svg>
+              20 hóspedes
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 9V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2" stroke="#0A489B" stroke-width="1.6"/><path d="M2 14v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-3" stroke="#0A489B" stroke-width="1.6"/><path d="M2 11h20" stroke="#0A489B" stroke-width="1.6"/><path d="M9 11V9" stroke="#0A489B" stroke-width="1.6"/></svg>
+              5 suítes
+            </span>
+            <span class="spec">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12c0 4.42 3.58 8 8 8s8-3.58 8-8M4 12c0-1.85.63-3.55 1.68-4.9" stroke="#0A489B" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="5" r="2" stroke="#0A489B" stroke-width="1.6"/></svg>
+              5 banheiros
+            </span>
+          </div>
+          <div class="rating-row">
+            <div class="stars">
+              <span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-full">★</span><span class="s-empty">★</span>
+            </div>
+            <span class="r-score">4,33</span>
+            <span class="r-count">(6 avaliações)</span>
+          </div>
+          <div class="amenities">
+            <span class="am-tag">🏊 Piscina</span>
+            <span class="am-tag">🔥 Sauna privativa</span>
+            <span class="am-tag">📶 Wi-Fi</span>
+            <span class="am-tag">🚗 Estacionamento</span>
+            <span class="am-tag">❄️ Ar-condicionado</span>
+            <span class="am-tag">🥩 Churrasqueira</span>
+            <span class="am-tag">🍳 Cozinha externa</span>
+          </div>
+          <div class="highlights">
+            <div class="hl pos"><span class="hl-icon">✓</span>Casa espaçosa e confortável, idêntica às fotos — cozinha bem equipada</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Anfitriã (Rodrigo/Patrícia) atenciosa e ágil no atendimento</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Condomínio fechado com portaria 24h, a 10 min de várias praias</div>
+            <div class="hl pos"><span class="hl-icon">✓</span>Amplo espaço externo com muito verde e privacidade</div>
+            <div class="hl neg"><span class="hl-icon">⚠</span>Queda de água recorrente e sauna parou de funcionar durante estadia</div>
+            <div class="hl neg"><span class="hl-icon">⚠</span>Casa antiga: alguns ACs sem refrigeração, geladeiras com defeito</div>
+          </div>
+          <div class="hr"></div>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <span class="price-val">R$ 32.225</span>
+            <span class="price-per">por mês · 29 noites</span>
+          </div>
+          <a href="https://www.airbnb.com.br/rooms/1510437568951116991?check_in=2026-05-19&check_out=2026-06-17&guests=1&adults=10&s=67&unique_share_id=0b7ec7f6-7336-4d75-a56a-286031a64a4d" target="_blank" class="btn-see">Ver Imóvel</a>
+        </div>
+        <div class="card-obs">Preço original sem desconto: R$39.325/mês. Capacidade de até 20 hóspedes conforme regras da casa. Verificar manutenção antes de reservar.</div>
+      </div>
+
+    </div><!-- /cards-grid -->
+  </div><!-- /section-wrap -->
+</main>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════════ -->
+<footer>
+  <p class="ft-logo">REDOMA</p>
+  <p class="ft-group">Apex Partners Group</p>
+  <div class="ft-rule"></div>
+  <p class="ft-caption">Curadoria exclusiva preparada pela equipe Redoma</p>
+  <p class="ft-disclaimer">Este documento é confidencial e destinado exclusivamente ao cliente indicado.</p>
+</footer>
+
+<script>
+  function filterCards(city, btn) {
+    // update button states
+    document.querySelectorAll('.filter-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    btn.classList.add('active');
+
+    // show/hide cards
+    document.querySelectorAll('.card').forEach(function(card) {
+      if (city === 'all' || card.dataset.city === city) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
