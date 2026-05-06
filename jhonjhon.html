@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JHON JHON – Seleção de Hospedagem | REDOMA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue-primary:   #0078D2;
+      --blue-dark:      #002060;
+      --blue-mid:       #0A489B;
+      --blue-light-1:   #8CBCE8;
+      --blue-light-2:   #DAE3F3;
+      --bg-neutral:     #F6F6F6;
+      --white:          #FFFFFF;
+      --black:          #000000;
+      --green-check:    #1A8A4A;
+      --warn-yellow:    #B07D00;
+      --text-body:      #1C2B3A;
+      --text-muted:     #5A7089;
+      --border-subtle:  #DDE5EF;
+      --shadow-card:    0 2px 16px rgba(0,32,96,0.09);
+      --shadow-hover:   0 6px 32px rgba(0,32,96,0.15);
+      --radius:         6px;
+      --radius-sm:      4px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', 'Segoe UI', sans-serif;
+      background: var(--bg-neutral);
+      color: var(--text-body);
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HEADER ─── */
+    .site-header {
+      background: var(--blue-dark);
+      padding: 52px 48px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .site-header::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(0,120,210,0.08);
+      pointer-events: none;
+    }
+    .site-header::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 30%;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(140,188,232,0.05);
+      pointer-events: none;
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .header-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue-light-1);
+      margin-bottom: 16px;
+    }
+    .header-title {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .header-subtitle {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--blue-light-2);
+      margin-bottom: 6px;
+    }
+    .header-period {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--blue-light-1);
+      letter-spacing: 0.08em;
+    }
+    .header-divider {
+      width: 48px; height: 2px;
+      background: var(--blue-primary);
+      margin: 20px 0;
+    }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      background: var(--blue-primary);
+      padding: 0 48px;
+    }
+    .stats-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: stretch;
+    }
+    .stat-block {
+      flex: 1;
+      padding: 22px 24px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .stat-block:last-child { border-right: none; }
+    .stat-number {
+      display: block;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--blue-light-2);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── FILTERS ─── */
+    .filters-section {
+      background: var(--white);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 48px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 8px rgba(0,32,96,0.06);
+    }
+    .filters-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .filter-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-right: 6px;
+    }
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1.5px solid var(--blue-light-2);
+      background: var(--blue-light-2);
+      color: var(--blue-dark);
+      font-family: 'Manrope', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .filter-btn:hover {
+      border-color: var(--blue-primary);
+      background: rgba(0,120,210,0.08);
+      color: var(--blue-primary);
+    }
+    .filter-btn.active {
+      background: var(--blue-primary);
+      border-color: var(--blue-primary);
+      color: var(--white);
+    }
+    .filter-count {
+      background: rgba(255,255,255,0.25);
+      border-radius: 10px;
+      padding: 1px 6px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .filter-btn.active .filter-count {
+      background: rgba(255,255,255,0.3);
+    }
+    .filter-btn:not(.active) .filter-count {
+      background: rgba(0,32,96,0.1);
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .main-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 48px 64px;
+    }
+    .section-heading {
+      margin-bottom: 28px;
+    }
+    .section-heading h2 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-primary);
+      margin-bottom: 4px;
+    }
+    .section-heading p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ─── CARD GRID ─── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    /* ─── PROPERTY CARD ─── */
+    .prop-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .prop-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+    .prop-card.hidden { display: none; }
+
+    /* Photo */
+    .card-photo {
+      position: relative;
+      height: 210px;
+      overflow: hidden;
+      background: var(--blue-light-2);
+      flex-shrink: 0;
+    }
+    .card-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .prop-card:hover .card-photo img { transform: scale(1.04); }
+
+    /* Platform badge */
+    .platform-badge {
+      position: absolute;
+      top: 12px; right: 12px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .badge-airbnb {
+      background: rgba(255,90,71,0.92);
+      color: #fff;
+    }
+    .badge-booking {
+      background: rgba(0,100,200,0.92);
+      color: #fff;
+    }
+
+    /* Distance tag */
+    .distance-tag {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      background: rgba(0,32,96,0.82);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Card body */
+    .card-body {
+      padding: 20px 20px 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .card-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--blue-dark);
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+
+    .card-location {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .card-location svg { flex-shrink: 0; }
+
+    /* Specs row */
+    .card-specs {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 14px;
+    }
+    .spec-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 4px;
+      gap: 3px;
+      border-right: 1px solid var(--border-subtle);
+    }
+    .spec-item:last-child { border-right: none; }
+    .spec-item svg { color: var(--blue-primary); }
+    .spec-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue-dark);
+    }
+    .spec-label {
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Rating */
+    .card-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .stars {
+      display: flex;
+      gap: 2px;
+    }
+    .star { font-size: 12px; }
+    .star.full  { color: #E8A800; }
+    .star.empty { color: #D0D8E4; }
+    .rating-score {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue-dark);
+    }
+    .rating-count {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .no-reviews {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Amenities */
+    .amenities-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .amenity-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      background: var(--blue-light-2);
+      color: var(--blue-mid);
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    /* Points */
+    .points-block { margin-bottom: 12px; }
+    .points-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--text-body);
+      margin-bottom: 4px;
+      line-height: 1.45;
+    }
+    .point-icon {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Observations */
+    .card-obs {
+      background: var(--bg-neutral);
+      border-left: 3px solid var(--blue-light-1);
+      padding: 8px 10px;
+      border-radius: 0 3px 3px 0;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    /* Card footer */
+    .card-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+    }
+    .price-block { display: flex; flex-direction: column; gap: 2px; }
+    .price-main {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue-primary);
+      line-height: 1;
+    }
+    .price-sub {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+    .btn-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      background: var(--blue-dark);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-view:hover { background: var(--blue-primary); }
+
+    /* ─── FOOTER ─── */
+    .site-footer {
+      background: var(--blue-dark);
+      padding: 40px 48px;
+      text-align: center;
+    }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .footer-sub {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--blue-light-1);
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .footer-divider {
+      width: 40px; height: 1px;
+      background: rgba(140,188,232,0.3);
+      margin: 16px auto;
+    }
+    .footer-line {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--blue-light-2);
+      margin-bottom: 6px;
+    }
+    .footer-disclaimer {
+      font-size: 10px;
+      font-weight: 400;
+      color: rgba(140,188,232,0.6);
+      letter-spacing: 0.04em;
+      margin-top: 10px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .site-header, .stats-bar, .filters-section, .main-content, .site-footer {
+        padding-left: 24px; padding-right: 24px;
+      }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      .site-header { padding: 32px 20px 28px; }
+      .stats-bar { padding: 0 20px; }
+      .filters-section { padding: 12px 20px; }
+      .main-content { padding: 24px 20px 48px; }
+      .site-footer { padding: 28px 20px; }
+      .cards-grid { grid-template-columns: 1fr; gap: 16px; }
+      .stats-inner { flex-direction: column; }
+      .stat-block { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 14px; }
+      .stat-block:last-child { border-bottom: none; }
+    }
+
+    /* Placeholder SVG */
+    .photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue-light-2);
+      color: var(--blue-light-1);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ──────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-label">Curadoria Exclusiva de Hospedagem</div>
+    <h1 class="header-title">Jhon Jhon</h1>
+    <div class="header-divider"></div>
+    <p class="header-subtitle">Vila Velha, ES &mdash; Referência de localização</p>
+    <p class="header-period">19/05 a 17/06 &nbsp;·&nbsp; 29 Noites</p>
+  </div>
+</header>
+
+<!-- ─── STATS BAR ────────────────────────────── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-block">
+      <span class="stat-number">8</span>
+      <span class="stat-label">Opções Selecionadas</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-number">2</span>
+      <span class="stat-label">Hóspedes (máx.)</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-number">29</span>
+      <span class="stat-label">Noites</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FILTERS ──────────────────────────────── -->
+<div class="filters-section">
+  <div class="filters-inner">
+    <span class="filter-label">Filtrar por:</span>
+    <button class="filter-btn active" onclick="filterCards('all', this)">
+      Todos <span class="filter-count">8</span>
+    </button>
+    <button class="filter-btn" onclick="filterCards('vilavelha', this)">
+      Vila Velha <span class="filter-count">7</span>
+    </button>
+    <button class="filter-btn" onclick="filterCards('vitoria', this)">
+      Vitória <span class="filter-count">1</span>
+    </button>
+  </div>
+</div>
+
+<!-- ─── MAIN ──────────────────────────────────── -->
+<main class="main-content">
+  <div class="section-heading">
+    <h2>Imóveis Selecionados</h2>
+    <p>Ordenados por proximidade em relação à referência · Vila Velha, ES</p>
+  </div>
+
+  <div class="cards-grid" id="cardsGrid">
+
+    <!-- ════════════════════════════════════════
+         CARD 1 — Cobertura duplex vista pra praia
+         ════════════════════════════════════════ -->
+    <div class="prop-card" data-city="vilavelha">
+      <div class="card-photo">
+        <img
+          src="https://a0.muscache.com/im/pictures/hosting/Hosting-1176169038857801532/original/173c9de5-6ef2-4b5a-abf7-e1898023df15.jpeg?im_w=720"
+          alt="Cobertura duplex vista pra praia"
+          onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\'><svg width=\'48\' height=\'48\' fill=\'none\' viewBox=\'0 0 24 24\'><path d=\'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg></div>'"
+        />
+        <span class="platform-badge badge-airbnb">Airbnb</span>
+        <span class="distance-tag">Vila Velha, ES</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Cobertura duplex vista pra praia</div>
+        <div class="card-location">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#5A7089"/></svg>
+          Vila Velha, ES
+        </div>
+        <div class="card-specs">
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M17 20H7V9.77L12 5l5 4.77V20z" stroke="#0078D2" stroke-width="1.5" stroke-linejoin="round"/><rect x="9.5" y="14" width="5" height="6" rx=".5" stroke="#0078D2" stroke-width="1.5"/></svg>
+            <span class="spec-value">6</span>
+            <span class="spec-label">Hóspedes</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M2 12h20M2 12v6a1 1 0 001 1h18a1 1 0 001-1v-6M2 12V8a2 2 0 012-2h4.586a1 1 0 01.707.293L11 8h2l1.707-1.707A1 1 0 0115.414 6H20a2 2 0 012 2v4" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">3</span>
+            <span class="spec-label">Quartos</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M4 16v2a1 1 0 001 1h14a1 1 0 001-1v-2M4 16H2m2 0h16m0 0h2M9 7a3 3 0 000 6h6a3 3 0 000-6H9z" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">3,5</span>
+            <span class="spec-label">Banheiros</span>
+          </div>
+        </div>
+        <div class="card-rating">
+          <div class="stars">
+            <span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span>
+          </div>
+          <span class="rating-score">4,82</span>
+          <span class="rating-count">(17 avaliações)</span>
+        </div>
+        <div class="amenities-row">
+          <span class="amenity-tag">Wi-Fi</span>
+          <span class="amenity-tag">Cozinha</span>
+          <span class="amenity-tag">Ar-cond.</span>
+          <span class="amenity-tag">Estacionamento</span>
+          <span class="amenity-tag">Jacuzzi</span>
+          <span class="amenity-tag">Churrasco</span>
+          <span class="amenity-tag">Acesso à praia</span>
+        </div>
+        <div class="points-block">
+          <div class="points-title">Destaques</div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Vista panorâmica do mar da cobertura duplex no 12º andar
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Ótima localização e fácil comunicação com o anfitrião
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Cobertura com jacuzzi e área de churrasco
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Apartamento bem cuidado, limpo e confortável
+          </div>
+        </div>
+        <div class="points-block">
+          <div class="points-title">Atenção</div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FFF8E6"/><path d="M12 8v4m0 3h.01" stroke="#B07D00" stroke-width="2" stroke-linecap="round"/></svg>
+            Jacuzzi com relatos de problemas de manutenção
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FFF8E6"/><path d="M12 8v4m0 3h.01" stroke="#B07D00" stroke-width="2" stroke-linecap="round"/></svg>
+            Não disponibiliza roupas de cama e toalha
+          </div>
+        </div>
+        <div class="card-obs">Preço com desconto de estadia longa (29 noites). Não inclui roupas de cama e toalha.</div>
+      </div>
+      <div class="card-footer">
+        <div class="price-block">
+          <span class="price-main">R$ 17.574</span>
+          <span class="price-sub">por mês · com desconto (29 noites)</span>
+        </div>
+        <a href="https://www.airbnb.com.br/rooms/1176169038857801532?check_in=2026-05-19&check_out=2026-06-17&guests=10&adults=2&s=67&unique_share_id=6d0dc8ee-823f-4858-8bae-61aff2517cc2" target="_blank" rel="noopener noreferrer" class="btn-view">
+          Ver Imóvel
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════
+         CARD 2 — Apt lindo e moderno com vista frontal
+         ════════════════════════════════════════ -->
+    <div class="prop-card" data-city="vilavelha">
+      <div class="card-photo">
+        <img
+          src="https://a0.muscache.com/im/pictures/a2fd83a0-2b21-4dcb-87eb-554a9d4d57e2.jpg?im_w=720"
+          alt="Apt lindo e moderno com vista frontal para o mar"
+          onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\'><svg width=\'48\' height=\'48\' fill=\'none\' viewBox=\'0 0 24 24\'><path d=\'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg></div>'"
+        />
+        <span class="platform-badge badge-airbnb">Airbnb</span>
+        <span class="distance-tag">Praia de Itaparica, Vila Velha</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Apt lindo e moderno com vista frontal para o mar!</div>
+        <div class="card-location">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#5A7089"/></svg>
+          Vila Velha, ES
+        </div>
+        <div class="card-specs">
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M17 20H7V9.77L12 5l5 4.77V20z" stroke="#0078D2" stroke-width="1.5" stroke-linejoin="round"/><rect x="9.5" y="14" width="5" height="6" rx=".5" stroke="#0078D2" stroke-width="1.5"/></svg>
+            <span class="spec-value">4</span>
+            <span class="spec-label">Hóspedes</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M2 12h20M2 12v6a1 1 0 001 1h18a1 1 0 001-1v-6M2 12V8a2 2 0 012-2h4.586a1 1 0 01.707.293L11 8h2l1.707-1.707A1 1 0 0115.414 6H20a2 2 0 012 2v4" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">1</span>
+            <span class="spec-label">Quartos</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M4 16v2a1 1 0 001 1h14a1 1 0 001-1v-2M4 16H2m2 0h16m0 0h2M9 7a3 3 0 000 6h6a3 3 0 000-6H9z" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">1</span>
+            <span class="spec-label">Banheiros</span>
+          </div>
+        </div>
+        <div class="card-rating">
+          <div class="stars">
+            <span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span>
+          </div>
+          <span class="rating-score">4,93</span>
+          <span class="rating-count">(120 avaliações)</span>
+        </div>
+        <div class="amenities-row">
+          <span class="amenity-tag">Vista p/ o mar</span>
+          <span class="amenity-tag">Wi-Fi</span>
+          <span class="amenity-tag">Cozinha</span>
+          <span class="amenity-tag">Ar-cond.</span>
+          <span class="amenity-tag">Piscina</span>
+          <span class="amenity-tag">Sauna</span>
+          <span class="amenity-tag">Home office</span>
+        </div>
+        <div class="points-block">
+          <div class="points-title">Destaques</div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Apartamento super luxuoso, decoração impecável, super limpo
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Localização privilegiada à beira-mar — Praia de Itaparica
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anfitriões (Marquinhos e Lara) com taxa de resposta 100%
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Prédio com piscina, academia e área de lazer na cobertura
+          </div>
+        </div>
+        <div class="card-obs">Kit de roupa de cama e banho incluso (1 kit). Costuma estar sempre reservado — reserva antecipada recomendada.</div>
+      </div>
+      <div class="card-footer">
+        <div class="price-block">
+          <span class="price-main">R$ 16.841</span>
+          <span class="price-sub">por mês · 29 noites</span>
+        </div>
+        <a href="https://www.airbnb.com.br/rooms/52240185?check_in=2026-05-19&check_out=2026-06-17&guests=10&adults=2&s=67&unique_share_id=4a163b37-2d51-44cf-af77-e71e745f45fa" target="_blank" rel="noopener noreferrer" class="btn-view">
+          Ver Imóvel
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════
+         CARD 3 — Apartamento aconchegante de frente para o mar
+         ════════════════════════════════════════ -->
+    <div class="prop-card" data-city="vilavelha">
+      <div class="card-photo">
+        <img
+          src="https://a0.muscache.com/im/pictures/f7f60fb9-dae7-40e1-a1ca-33fc2d2601c0.jpg?im_w=720"
+          alt="Apartamento aconchegante de frente para o mar"
+          onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\'><svg width=\'48\' height=\'48\' fill=\'none\' viewBox=\'0 0 24 24\'><path d=\'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg></div>'"
+        />
+        <span class="platform-badge badge-airbnb">Airbnb</span>
+        <span class="distance-tag">Praia da Costa, Vila Velha</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Apartamento aconchegante de frente para o mar</div>
+        <div class="card-location">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#5A7089"/></svg>
+          Vila Velha, ES
+        </div>
+        <div class="card-specs">
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M17 20H7V9.77L12 5l5 4.77V20z" stroke="#0078D2" stroke-width="1.5" stroke-linejoin="round"/><rect x="9.5" y="14" width="5" height="6" rx=".5" stroke="#0078D2" stroke-width="1.5"/></svg>
+            <span class="spec-value">6</span>
+            <span class="spec-label">Hóspedes</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M2 12h20M2 12v6a1 1 0 001 1h18a1 1 0 001-1v-6M2 12V8a2 2 0 012-2h4.586a1 1 0 01.707.293L11 8h2l1.707-1.707A1 1 0 0115.414 6H20a2 2 0 012 2v4" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">3</span>
+            <span class="spec-label">Quartos</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M4 16v2a1 1 0 001 1h14a1 1 0 001-1v-2M4 16H2m2 0h16m0 0h2M9 7a3 3 0 000 6h6a3 3 0 000-6H9z" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">3</span>
+            <span class="spec-label">Banheiros</span>
+          </div>
+        </div>
+        <div class="card-rating">
+          <div class="stars">
+            <span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span>
+          </div>
+          <span class="rating-score">4,99</span>
+          <span class="rating-count">(72 avaliações)</span>
+        </div>
+        <div class="amenities-row">
+          <span class="amenity-tag">Vista p/ o mar</span>
+          <span class="amenity-tag">Wi-Fi</span>
+          <span class="amenity-tag">Cozinha</span>
+          <span class="amenity-tag">Ar-cond.</span>
+          <span class="amenity-tag">Máq. lavar</span>
+          <span class="amenity-tag">Pets OK</span>
+          <span class="amenity-tag">Estacionamento</span>
+        </div>
+        <div class="points-block">
+          <div class="points-title">Destaques</div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Localização fantástica — encontro das praias da Sereia e da Costa
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Apartamento amplo, moderno e idêntico às fotos
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Guarda-sol e cadeiras disponíveis para os hóspedes
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anfitriã Andréia extremamente atenciosa
+          </div>
+        </div>
+        <div class="card-obs">Ar-condicionado split em todos os 3 quartos. Permite animais de estimação.</div>
+      </div>
+      <div class="card-footer">
+        <div class="price-block">
+          <span class="price-main">R$ 22.765</span>
+          <span class="price-sub">por mês · com desconto (29 noites)</span>
+        </div>
+        <a href="https://www.airbnb.com.br/rooms/45617175?check_in=2026-05-19&check_out=2026-06-17&guests=4&adults=2&s=67&unique_share_id=b5981e9f-f3ab-4d4b-a428-25282a5298a5" target="_blank" rel="noopener noreferrer" class="btn-view">
+          Ver Imóvel
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════
+         CARD 4 — Apartamento no Paraíso Urbano
+         ════════════════════════════════════════ -->
+    <div class="prop-card" data-city="vilavelha">
+      <div class="card-photo">
+        <img
+          src="https://a0.muscache.com/im/pictures/miso/Hosting-1307998912446086809/original/0a63a26d-462c-477a-81d8-29df26cbd759.jpeg?im_w=720"
+          alt="Apartamento no Paraíso Urbano"
+          onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\'><svg width=\'48\' height=\'48\' fill=\'none\' viewBox=\'0 0 24 24\'><path d=\'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg></div>'"
+        />
+        <span class="platform-badge badge-airbnb">Airbnb</span>
+        <span class="distance-tag">Vila Velha, ES</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Apartamento no Paraíso Urbano!</div>
+        <div class="card-location">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#5A7089"/></svg>
+          Vila Velha, ES
+        </div>
+        <div class="card-specs">
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M17 20H7V9.77L12 5l5 4.77V20z" stroke="#0078D2" stroke-width="1.5" stroke-linejoin="round"/><rect x="9.5" y="14" width="5" height="6" rx=".5" stroke="#0078D2" stroke-width="1.5"/></svg>
+            <span class="spec-value">5</span>
+            <span class="spec-label">Hóspedes</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M2 12h20M2 12v6a1 1 0 001 1h18a1 1 0 001-1v-6M2 12V8a2 2 0 012-2h4.586a1 1 0 01.707.293L11 8h2l1.707-1.707A1 1 0 0115.414 6H20a2 2 0 012 2v4" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">3</span>
+            <span class="spec-label">Quartos</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M4 16v2a1 1 0 001 1h14a1 1 0 001-1v-2M4 16H2m2 0h16m0 0h2M9 7a3 3 0 000 6h6a3 3 0 000-6H9z" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">2</span>
+            <span class="spec-label">Banheiros</span>
+          </div>
+        </div>
+        <div class="card-rating">
+          <span class="no-reviews">Sem avaliações · Imóvel novo</span>
+        </div>
+        <div class="amenities-row">
+          <span class="amenity-tag">Wi-Fi</span>
+          <span class="amenity-tag">Cozinha</span>
+          <span class="amenity-tag">Ar-cond.</span>
+          <span class="amenity-tag">Piscina</span>
+          <span class="amenity-tag">Estacionamento</span>
+          <span class="amenity-tag">Máq. lavar</span>
+        </div>
+        <div class="points-block">
+          <div class="points-title">Destaques</div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Lindo apartamento a poucos passos da praia
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Piscina disponível — um dos poucos da região com piscina
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Padaria, mini mercado, restaurantes e farmácia nas proximidades
+          </div>
+        </div>
+        <div class="card-obs">Imóvel novo, sem histórico de avaliações. Check-in: 16h–20h. Checkout até 12h.</div>
+      </div>
+      <div class="card-footer">
+        <div class="price-block">
+          <span class="price-main">R$ 24.659</span>
+          <span class="price-sub">por mês · com desconto (29 noites)</span>
+        </div>
+        <a href="https://www.airbnb.com.br/rooms/1307998912446086809?check_in=2026-05-19&check_out=2026-06-17&guests=10&adults=2&s=67&unique_share_id=ac7c8377-0920-4bf1-b5e7-5d15c75c6944" target="_blank" rel="noopener noreferrer" class="btn-view">
+          Ver Imóvel
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════
+         CARD 5 — Praia da Costa. Maravilhoso apartamento!
+         ════════════════════════════════════════ -->
+    <div class="prop-card" data-city="vilavelha">
+      <div class="card-photo">
+        <img
+          src="https://a0.muscache.com/im/pictures/bcf6ffcf-217d-40cd-b183-cfdb11f15d71.jpg?im_w=720"
+          alt="Praia da Costa. Maravilhoso apartamento!"
+          onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\'><svg width=\'48\' height=\'48\' fill=\'none\' viewBox=\'0 0 24 24\'><path d=\'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg></div>'"
+        />
+        <span class="platform-badge badge-airbnb">Airbnb</span>
+        <span class="distance-tag">Praia da Costa, Vila Velha</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Praia da Costa. Maravilhoso apartamento!</div>
+        <div class="card-location">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#5A7089"/></svg>
+          Vila Velha, ES
+        </div>
+        <div class="card-specs">
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M17 20H7V9.77L12 5l5 4.77V20z" stroke="#0078D2" stroke-width="1.5" stroke-linejoin="round"/><rect x="9.5" y="14" width="5" height="6" rx=".5" stroke="#0078D2" stroke-width="1.5"/></svg>
+            <span class="spec-value">5</span>
+            <span class="spec-label">Hóspedes</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M2 12h20M2 12v6a1 1 0 001 1h18a1 1 0 001-1v-6M2 12V8a2 2 0 012-2h4.586a1 1 0 01.707.293L11 8h2l1.707-1.707A1 1 0 0115.414 6H20a2 2 0 012 2v4" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">2</span>
+            <span class="spec-label">Quartos</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M4 16v2a1 1 0 001 1h14a1 1 0 001-1v-2M4 16H2m2 0h16m0 0h2M9 7a3 3 0 000 6h6a3 3 0 000-6H9z" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">1</span>
+            <span class="spec-label">Banheiros</span>
+          </div>
+        </div>
+        <div class="card-rating">
+          <div class="stars">
+            <span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span>
+          </div>
+          <span class="rating-score">4,82</span>
+          <span class="rating-count">(17 avaliações)</span>
+        </div>
+        <div class="amenities-row">
+          <span class="amenity-tag">Vista baía</span>
+          <span class="amenity-tag">Wi-Fi</span>
+          <span class="amenity-tag">Cozinha</span>
+          <span class="amenity-tag">Ar-cond.</span>
+          <span class="amenity-tag">Piscina</span>
+          <span class="amenity-tag">Sauna</span>
+          <span class="amenity-tag">Churrasco</span>
+        </div>
+        <div class="points-block">
+          <div class="points-title">Destaques</div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Melhor e mais bela vista da Praia da Costa
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Sauna, piscina e churrasqueira na cobertura
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anfitrião Gilmar ágil, amigável e prestativo
+          </div>
+        </div>
+        <div class="points-block">
+          <div class="points-title">Atenção</div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FFF8E6"/><path d="M12 8v4m0 3h.01" stroke="#B07D00" stroke-width="2" stroke-linecap="round"/></svg>
+            Presença de insetos relatada em uma avaliação
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FFF8E6"/><path d="M12 8v4m0 3h.01" stroke="#B07D00" stroke-width="2" stroke-linecap="round"/></svg>
+            Acesso à garagem descrito como apertado
+          </div>
+        </div>
+        <div class="card-obs">Sala de estar com 1 cama de casal e 2 colchões extras. Câmeras de segurança na parte externa.</div>
+      </div>
+      <div class="card-footer">
+        <div class="price-block">
+          <span class="price-main">R$ 22.230</span>
+          <span class="price-sub">por mês · com desconto (29 noites)</span>
+        </div>
+        <a href="https://www.airbnb.com.br/rooms/48941772?check_in=2026-05-19&check_out=2026-06-17&guests=10&adults=2&s=67&unique_share_id=9d494259-a53b-4115-8d3d-f2ec1d1c4632" target="_blank" rel="noopener noreferrer" class="btn-view">
+          Ver Imóvel
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════
+         CARD 7 — Apartamento Kiribati
+         ════════════════════════════════════════ -->
+    <div class="prop-card" data-city="vilavelha">
+      <div class="card-photo">
+        <img
+          src="https://a0.muscache.com/im/pictures/hosting/Hosting-1497351962389171158/original/8142b7cb-f049-4327-af77-eb9fb927ceb4.jpeg?im_w=720"
+          alt="Apartamento Kiribati"
+          onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\'><svg width=\'48\' height=\'48\' fill=\'none\' viewBox=\'0 0 24 24\'><path d=\'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg></div>'"
+        />
+        <span class="platform-badge badge-airbnb">Airbnb</span>
+        <span class="distance-tag">Vila Velha, ES</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Apartamento Kiribati</div>
+        <div class="card-location">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#5A7089"/></svg>
+          Vila Velha, ES
+        </div>
+        <div class="card-specs">
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M17 20H7V9.77L12 5l5 4.77V20z" stroke="#0078D2" stroke-width="1.5" stroke-linejoin="round"/><rect x="9.5" y="14" width="5" height="6" rx=".5" stroke="#0078D2" stroke-width="1.5"/></svg>
+            <span class="spec-value">5</span>
+            <span class="spec-label">Hóspedes</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M2 12h20M2 12v6a1 1 0 001 1h18a1 1 0 001-1v-6M2 12V8a2 2 0 012-2h4.586a1 1 0 01.707.293L11 8h2l1.707-1.707A1 1 0 0115.414 6H20a2 2 0 012 2v4" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">2</span>
+            <span class="spec-label">Quartos</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M4 16v2a1 1 0 001 1h14a1 1 0 001-1v-2M4 16H2m2 0h16m0 0h2M9 7a3 3 0 000 6h6a3 3 0 000-6H9z" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">2</span>
+            <span class="spec-label">Banheiros</span>
+          </div>
+        </div>
+        <div class="card-rating">
+          <div class="stars">
+            <span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span>
+          </div>
+          <span class="rating-score">5,0</span>
+          <span class="rating-count">(5 avaliações)</span>
+        </div>
+        <div class="amenities-row">
+          <span class="amenity-tag">Acesso à praia</span>
+          <span class="amenity-tag">Wi-Fi</span>
+          <span class="amenity-tag">Cozinha</span>
+          <span class="amenity-tag">Ar-cond.</span>
+          <span class="amenity-tag">Piscina</span>
+          <span class="amenity-tag">Roupas incl.</span>
+          <span class="amenity-tag">Pets OK</span>
+        </div>
+        <div class="points-block">
+          <div class="points-title">Destaques</div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Roupas de cama e banho de alto padrão incluídas
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anfitriã Ivone muito receptiva, carinhosa e cuidadosa
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Apartamento muito lindo, confortável e aconchegante
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Cozinha completa, piscina e self check-in
+          </div>
+        </div>
+        <div class="card-obs">Imóvel novo com 5 avaliações, todas 5 estrelas. Uma suíte + 1 quarto. Self check-in com fechadura inteligente.</div>
+      </div>
+      <div class="card-footer">
+        <div class="price-block">
+          <span class="price-main">R$ 15.582</span>
+          <span class="price-sub">por mês · com desconto (29 noites)</span>
+        </div>
+        <a href="https://www.airbnb.com.br/rooms/1497351962389171158?check_in=2026-05-19&check_out=2026-06-17&guests=10&adults=2&s=67&unique_share_id=410ddad4-853f-4b9b-840c-8e41c7621c80" target="_blank" rel="noopener noreferrer" class="btn-view">
+          Ver Imóvel
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════
+         CARD 8 — Lindo apartamento no mar de Itaparica (Booking)
+         ════════════════════════════════════════ -->
+    <div class="prop-card" data-city="vilavelha">
+      <div class="card-photo">
+        <img
+          src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/369369466.jpg"
+          alt="Lindo apartamento no mar de Itaparica"
+          onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\'><svg width=\'48\' height=\'48\' fill=\'none\' viewBox=\'0 0 24 24\'><path d=\'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg></div>'"
+        />
+        <span class="platform-badge badge-booking">Booking</span>
+        <span class="distance-tag">Praia de Itaparica, Vila Velha</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Lindo apartamento no mar de Itaparica</div>
+        <div class="card-location">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#5A7089"/></svg>
+          Vila Velha, ES
+        </div>
+        <div class="card-specs">
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M17 20H7V9.77L12 5l5 4.77V20z" stroke="#0078D2" stroke-width="1.5" stroke-linejoin="round"/><rect x="9.5" y="14" width="5" height="6" rx=".5" stroke="#0078D2" stroke-width="1.5"/></svg>
+            <span class="spec-value">6</span>
+            <span class="spec-label">Hóspedes</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M2 12h20M2 12v6a1 1 0 001 1h18a1 1 0 001-1v-6M2 12V8a2 2 0 012-2h4.586a1 1 0 01.707.293L11 8h2l1.707-1.707A1 1 0 0115.414 6H20a2 2 0 012 2v4" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">3</span>
+            <span class="spec-label">Quartos</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M4 16v2a1 1 0 001 1h14a1 1 0 001-1v-2M4 16H2m2 0h16m0 0h2M9 7a3 3 0 000 6h6a3 3 0 000-6H9z" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">3</span>
+            <span class="spec-label">Banheiros</span>
+          </div>
+        </div>
+        <div class="card-rating">
+          <div class="stars">
+            <span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star empty">★</span>
+          </div>
+          <span class="rating-score">8,3/10</span>
+          <span class="rating-count">(15 avaliações)</span>
+        </div>
+        <div class="amenities-row">
+          <span class="amenity-tag">Wi-Fi</span>
+          <span class="amenity-tag">Cozinha</span>
+          <span class="amenity-tag">Ar-cond.</span>
+          <span class="amenity-tag">Estacionamento</span>
+          <span class="amenity-tag">Roupas incl.</span>
+          <span class="amenity-tag">Varanda</span>
+        </div>
+        <div class="points-block">
+          <div class="points-title">Destaques</div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            110m² totalmente reformado — móveis, eletrodomésticos e camas novos
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Proprietário Joao Luiz com nota máxima (10) como anfitrião
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Praia de Itaparica a 50m — próximo a restaurantes e shopping
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Cancelamento gratuito até 14/05/2026
+          </div>
+        </div>
+        <div class="card-obs">Preço total para 29 noites. Roupa de cama inclusa (conjunto básico; extra com custo adicional). Nota: 8,3/10 (Muito bom) no Booking.com.</div>
+      </div>
+      <div class="card-footer">
+        <div class="price-block">
+          <span class="price-main">R$ 34.800</span>
+          <span class="price-sub">total · 29 noites</span>
+        </div>
+        <a href="https://www.booking.com/hotel/br/lindo-apartamento-no-mar-de-itaparica.pt-br.html?checkin=2026-05-19&checkout=2026-06-17&group_adults=2&group_children=0&no_rooms=1" target="_blank" rel="noopener noreferrer" class="btn-view">
+          Ver Imóvel
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════
+         CARD 6 — Apt aconchegante próximo à UFES (Vitória)
+         ════════════════════════════════════════ -->
+    <div class="prop-card" data-city="vitoria">
+      <div class="card-photo">
+        <img
+          src="https://a0.muscache.com/im/pictures/hosting/Hosting-35604963/original/f358afee-33b2-433c-baa9-3af194e1130a.jpeg?im_w=720"
+          alt="Apt aconchegante próximo à UFES"
+          onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\'><svg width=\'48\' height=\'48\' fill=\'none\' viewBox=\'0 0 24 24\'><path d=\'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\' stroke=\'currentColor\' stroke-width=\'1.5\'/></svg></div>'"
+        />
+        <span class="platform-badge badge-airbnb">Airbnb</span>
+        <span class="distance-tag">Vitória, ES · ~15 km</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Apt aconchegante próximo à UFES — 3 qts com ar</div>
+        <div class="card-location">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#5A7089"/></svg>
+          Jardim da Penha, Vitória, ES
+        </div>
+        <div class="card-specs">
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M17 20H7V9.77L12 5l5 4.77V20z" stroke="#0078D2" stroke-width="1.5" stroke-linejoin="round"/><rect x="9.5" y="14" width="5" height="6" rx=".5" stroke="#0078D2" stroke-width="1.5"/></svg>
+            <span class="spec-value">7</span>
+            <span class="spec-label">Hóspedes</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M2 12h20M2 12v6a1 1 0 001 1h18a1 1 0 001-1v-6M2 12V8a2 2 0 012-2h4.586a1 1 0 01.707.293L11 8h2l1.707-1.707A1 1 0 0115.414 6H20a2 2 0 012 2v4" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">3</span>
+            <span class="spec-label">Quartos</span>
+          </div>
+          <div class="spec-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M4 16v2a1 1 0 001 1h14a1 1 0 001-1v-2M4 16H2m2 0h16m0 0h2M9 7a3 3 0 000 6h6a3 3 0 000-6H9z" stroke="#0078D2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="spec-value">2</span>
+            <span class="spec-label">Banheiros</span>
+          </div>
+        </div>
+        <div class="card-rating">
+          <div class="stars">
+            <span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span>
+          </div>
+          <span class="rating-score">4,96</span>
+          <span class="rating-count">(112 avaliações)</span>
+        </div>
+        <div class="amenities-row">
+          <span class="amenity-tag">Wi-Fi</span>
+          <span class="amenity-tag">Cozinha</span>
+          <span class="amenity-tag">Ar-cond.</span>
+          <span class="amenity-tag">Estacionamento</span>
+          <span class="amenity-tag">Netflix</span>
+          <span class="amenity-tag">Home office</span>
+          <span class="amenity-tag">Self check-in</span>
+        </div>
+        <div class="points-block">
+          <div class="points-title">Destaques</div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            110m² totalmente renovado, com grandes janelas e muita luz natural
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anfitrião Fabiano com 100% de respostas; hóspede recorrente 3x
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Netflix, Disney+, HBO Max; todos os quartos com ar e blackout
+          </div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E6F5EC"/><path d="M8 12.5l3 3 5-5" stroke="#1A8A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bairro Jardim da Penha — orla, restaurantes e Convento da Penha
+          </div>
+        </div>
+        <div class="points-block">
+          <div class="points-title">Atenção</div>
+          <div class="point-item">
+            <svg class="point-icon" width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FFF8E6"/><path d="M12 8v4m0 3h.01" stroke="#B07D00" stroke-width="2" stroke-linecap="round"/></svg>
+            Localizado em Vitória — aproximadamente 15 km de Vila Velha
+          </div>
+        </div>
+        <div class="card-obs">Apartamento do 2º andar com elevador. Segurança na rua das 18h às 6h. Proibido fumar e festas.</div>
+      </div>
+      <div class="card-footer">
+        <div class="price-block">
+          <span class="price-main">R$ 25.975</span>
+          <span class="price-sub">por mês · com desconto (29 noites)</span>
+        </div>
+        <a href="https://www.airbnb.com.br/rooms/35604963?check_in=2026-05-19&check_out=2026-06-17&guests=10&adults=2&s=67&unique_share_id=868492e1-61d7-4210-a43b-010cb85b695f" target="_blank" rel="noopener noreferrer" class="btn-view">
+          Ver Imóvel
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /cards-grid -->
+</main>
+
+<!-- ─── FOOTER ────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">REDOMA</div>
+    <div class="footer-sub">Apex Partners Group</div>
+    <div class="footer-divider"></div>
+    <div class="footer-line">Curadoria exclusiva preparada pela equipe Redoma</div>
+    <div class="footer-disclaimer">Este documento é confidencial e destinado exclusivamente ao cliente indicado.</div>
+  </div>
+</footer>
+
+<script>
+  function filterCards(city, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const cards = document.querySelectorAll('.prop-card');
+    cards.forEach(card => {
+      if (city === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        if (card.dataset.city === city) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
